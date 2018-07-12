@@ -1,4 +1,3 @@
-require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const fetch = require('isomorphic-fetch');
@@ -7,7 +6,7 @@ const CodeGen = require('swagger-js-codegen').CodeGen;
 
 const pathToApiDir = path.resolve(__dirname, '..', 'src');
 const templatePath = path.resolve(__dirname, 'templates');
-  fetch(`${process.env.REACT_APP_API_BASE_URL}/swagger`)
+fetch('https://csm.sportnet.online/api/cm/swagger')
   .then(response => response.json())
   .then(swagger => {
     const source = CodeGen.getCustomCode({
